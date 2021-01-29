@@ -5,11 +5,11 @@ namespace ReaderWriterLock
 {
     public class RWLock
     {
-        public RWLock(int readerCount)
+        public RWLock()
         {
-            m_readerCount = readerCount;
-            m_dataLock = new Mutex();
-            m_countLock = new SemaphoreSlim(1, 1);
+            m_readerCount = 0;
+            m_dataLock = new SemaphoreSlim(1, 1);
+            m_countLock = new Mutex();
         }
         public void ReaderEnter()
         {
@@ -46,18 +46,14 @@ namespace ReaderWriterLock
     public static class ReaderWriterLockTest
     {
         static int[] s_data;
-        static SemaphoreSlim s_dataMutex;
-        static int s_count;
-        static Mutex s_countMutex;
         static Random s_rand;
         static bool s_stopFlag;
+        static RWLock s_lock;
         public static void Test(int threadSize = 10)
         {
+            s_lock = new RWLock();
             s_data = new int[threadSize * 2];
             Array.Fill(s_data, 0);
-            s_dataMutex = new SemaphoreSlim(1, 1);
-            s_count = 0;
-            s_countMutex = new Mutex(false);
             s_rand = new Random();
             s_stopFlag = false;
             Thread[] writers = new Thread[threadSize];
@@ -87,30 +83,14 @@ namespace ReaderWriterLock
             int ind = (int)index;
             while (!s_stopFlag)
             {
-                {
-                    s_countMutex.WaitOne();
-                    s_count++;
-                    if (Volatile.Read(ref s_count) == 1)
-                    {
-                        s_dataMutex.Wait(); // once a reader want, it will wait.
-                    }
-                    s_countMutex.ReleaseMutex();
-                }
+                s_lock.ReaderEnter();
                 {
                     int temp1 = s_data[ind];
                     Thread.Sleep(500); // to show the read operation is time consuming.
                     int temp2 = s_data[ind + 1];
                     System.Console.WriteLine("{0},{1}", temp1, temp2);
                 }
-                {
-                    s_countMutex.WaitOne();
-                    s_count--;
-                    if (Volatile.Read(ref s_count) == 0)
-                    {
-                        s_dataMutex.Release();
-                    }
-                    s_countMutex.ReleaseMutex();
-                }
+                s_lock.ReaderRelease();
                 Thread.Sleep(s_rand.Next(3000)); // simulate some time-consuming operations on the data, and to give writer a chance
             }
         }
@@ -120,11 +100,11 @@ namespace ReaderWriterLock
             int ind = (int)index;
             while (!s_stopFlag)
             {
-                s_dataMutex.Wait();
+                s_lock.WriterEnter();
                 Thread.Sleep(100);
                 int temp = s_rand.Next(10000);
                 s_data[ind] = s_data[ind + 1] = temp;
-                s_dataMutex.Release();
+                s_lock.WriterRelease();
                 Thread.Sleep(1000);
             }
 
