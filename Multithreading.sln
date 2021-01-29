@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.808.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multithreading", "Multithreading\Multithreading.csproj", "{E211B1B1-8BA7-460A-943D-ADBA729BFE0C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReaderWriterLock", "ReaderWriterLock\ReaderWriterLock.csproj", "{DBDCC6B2-6C33-4D20-B1EA-5A0912D1DA72}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E211B1B1-8BA7-460A-943D-ADBA729BFE0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E211B1B1-8BA7-460A-943D-ADBA729BFE0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E211B1B1-8BA7-460A-943D-ADBA729BFE0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBDCC6B2-6C33-4D20-B1EA-5A0912D1DA72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBDCC6B2-6C33-4D20-B1EA-5A0912D1DA72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBDCC6B2-6C33-4D20-B1EA-5A0912D1DA72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBDCC6B2-6C33-4D20-B1EA-5A0912D1DA72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
