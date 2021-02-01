@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multithreading", "Multithre
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReaderWriterLock", "ReaderWriterLock\ReaderWriterLock.csproj", "{DBDCC6B2-6C33-4D20-B1EA-5A0912D1DA72}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryMappedFileTest", "MemoryMappedFileTest\MemoryMappedFileTest.csproj", "{F2CFED4B-60C4-4A94-AB95-071E0F980812}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DBDCC6B2-6C33-4D20-B1EA-5A0912D1DA72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBDCC6B2-6C33-4D20-B1EA-5A0912D1DA72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBDCC6B2-6C33-4D20-B1EA-5A0912D1DA72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2CFED4B-60C4-4A94-AB95-071E0F980812}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2CFED4B-60C4-4A94-AB95-071E0F980812}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2CFED4B-60C4-4A94-AB95-071E0F980812}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2CFED4B-60C4-4A94-AB95-071E0F980812}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
